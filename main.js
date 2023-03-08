@@ -15,10 +15,24 @@ function renderPlayer(position) {
   }
 }
 
+function renderAI() {
+  // findemptyposition
+
+  // checkwhetherwin
+
+  // checkwhetherlose
+  
+  // check "5" position
+
+  // check [1, 3, 7, 9] position
+
+  // random position
+}
+
 function findEmptyPosition() {
   const boxs = document.querySelectorAll('td')
   const positions = []
-  boxs.forEach(box => { if (!box.innerHTML) positions.push(Number(box.dataset.position)) })
+  boxs.forEach(box => { if (box.innerHTML === "") positions.push(Number(box.dataset.position)) })
   return positions
 }
 
