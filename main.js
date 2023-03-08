@@ -8,24 +8,28 @@ function renderPlayer(position) {
   if (box === null || box.innerHTML) return
   positionData['o'].push(position)
   box.innerHTML = `<i class="fa-regular fa-o"></i>`
-  setTimeout(() => {
-    checkWhetherWin('o')
-  }, 100);
+  if (checkWhetherWin(positionData['o'])) {
+    setTimeout(() => {
+      alert(`Player: "O" Win !`)
+    }, 50);
+  }
 }
 
 function findEmptyPosition() {
   const boxs = document.querySelectorAll('td')
   const positions = []
-  boxs.forEach(box => { if (!box.innerHTML) positions.push(Number(box.dataset.position))})
+  boxs.forEach(box => { if (!box.innerHTML) positions.push(Number(box.dataset.position)) })
   return positions
 }
 
 function checkWhetherWin(who) {
-  winConditions.forEach(condition => {
-    if (condition.every(position => positionData[who].includes(position))) {
-      alert(`Player: "${who}" Win !`)
+  for (const condition of winConditions) {
+    if (condition.every(position => who.includes(position))) {
+      console.log('hi')
+      return true
     }
-  })
+  }
+  return false
 }
 
 function rows() {
